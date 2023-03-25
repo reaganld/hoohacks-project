@@ -8,6 +8,8 @@ const routes: Routes = [
     { path: 'landing', component: LandingComponent },
     { path: 'view', component: ViewComponent },
     { path: 'edit', component: EditComponent },
+    { path: '',   redirectTo: '/landing', pathMatch: 'full' },
+
 ];
 
 @NgModule({
