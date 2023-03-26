@@ -10,23 +10,26 @@ import { Subject } from "rxjs";
     providedIn: "root",
 })
 export class ImageService {
+    private image!: Image
     private images: Image[] = [];
     private images$ = new Subject<Image[]>();
+    private image$ = new Subject<Image[]>();
     readonly url = "http://localhost:3000/api/images";
 
     constructor(private http: HttpClient) {}
 
-    getImages() {
+    getImage() {
         console.log("hit service");
         this.http
-            .get<{ images: Image[] }>(this.url)
+            .get<{ image: Image }>(this.url)
             .pipe(
                 map(imageData => { 
-                    return imageData.images;
+                    console.log(imageData);
+                    return imageData.image;
                 })
             )
-            .subscribe((images) => {
-                this.images = images; 
+            .subscribe((image) => {
+                this.image = image; 
                 this.images$.next(this.images);
             });
     }
@@ -38,7 +41,7 @@ export class ImageService {
     addImage(coords: string, image: File): void {
         const imageData = new FormData();
         imageData.append("coords", coords);
-        imageData.append("image", image, coords);
+        imageData.append("image", image);
 
         this.http
             .post<{ image: Image }>(this.url, imageData)
