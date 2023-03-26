@@ -1,18 +1,9 @@
 import { Image } from "../models/image";
 
-const getImage = async (req, res) => {
-  try {
-    const coords = req!.param!.coords
-    const query = { coords: coords };
-    const image = await Image.findOne(query);
-    if (image) {
-        res.status(200).send(image);
-    } else {
-        res.status(404).send(`Failed to find an image: coord ${coords}`);
-    }
-  } catch (error) {
-    res.status(404).send(`Failed to find an image: coord ${req?.params?.coord}`);
-}
+const getImages = async (req, res) => {
+    console.log("here");
+    const images = await Image.find();
+    res.status(200).json({ images });
 };
 
 const postImage = async (req, res) => {
@@ -30,4 +21,4 @@ const postImage = async (req, res) => {
   });
 };
 
-export{getImage, postImage};
+export{getImages, postImage};

@@ -3,6 +3,8 @@ import mergeImages from 'merge-images';
 import { ImageService } from '../image/image.service';
 import { Injectable } from '@angular/core';
 import * as $ from 'jquery'
+import { Subscription } from 'rxjs';
+import { Image } from '../image/image';
 
 @Component({
   selector: 'app-landing',
@@ -11,8 +13,11 @@ import * as $ from 'jquery'
 })
 
 export class LandingComponent {
+    images: Image[] = [];
+    private imageSubscription!: Subscription;
 
 constructor(private imageService: ImageService) {}
+
 
   ngOnInit() {
   
@@ -30,7 +35,14 @@ constructor(private imageService: ImageService) {}
       const imageFile = new File([blob], imageName, { type: 'image/png' });
       this.imageService.addImage("0,0", imageFile);
     });
-    setTimeout(() => {  this.loop(); }, 1000);
+
+    this.imageService.getImages();
+    this.imageSubscription = this.imageService
+        .getImagesStream()
+        .subscribe((images: Image[]) => {
+            this.images = images;
+        });
+    // setTimeout(() => {  this.loop(); }, 1000);
 
   }
 
