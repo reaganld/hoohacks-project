@@ -19,10 +19,11 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "cors": "^2.8.5",
-    "multer": "^1.4.5-lts.1",
-    "painterro": "^1.2.78",
     "jquery": "^3.6.4",
     "merge-images": "^2.0.0",
+    "mongoose": "^7.0.3",
+    "multer": "^1.4.5-lts.1",
+    "painterro": "^1.2.78",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

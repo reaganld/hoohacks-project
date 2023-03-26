@@ -1,6 +1,5 @@
 export interface Image {
     _id: string;
-    x: string;
-    y: string;
+    coords: string;
     imagePath: string;
 }
