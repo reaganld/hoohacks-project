@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing.component.less']
 })
 export class LandingComponent {
-
+  
 }
