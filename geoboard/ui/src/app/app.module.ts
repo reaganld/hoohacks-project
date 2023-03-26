@@ -4,12 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditComponent } from './edit/edit.component';
 import { LandingComponent } from './landing/landing.component';
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditComponent,
-    LandingComponent
+    LandingComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
