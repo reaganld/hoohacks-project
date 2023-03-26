@@ -1,0 +1,8 @@
+compiledCode/
+
+*.js
+*.js.map
+*~
+/node_modules
+*.env
+connect.js
