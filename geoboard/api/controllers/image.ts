@@ -1,8 +1,8 @@
 import { Image } from "../models/image";
 
 const getImage = async (req, res) => {
-  const profiles = await Image.find();
-  res.status(200).json({ profiles });
+  const images = await Image.find();
+  res.status(200).json({ images });
 };
 
 const postImage = async (req, res) => {
