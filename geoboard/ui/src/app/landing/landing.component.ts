@@ -19,7 +19,7 @@ constructor(private imageService: ImageService) {}
     mergeImages(['assets/body.png', 'assets/eyes.png', 'assets/mouth.png'])
     .then( (b64) => {
       let str:string = b64;
-      const imageName = 'test111';
+      const imageName = 'test1121';
       const byteString = window.atob(str.split(",")[1]);
       const arrayBuffer = new ArrayBuffer(byteString.length);
       const int8Array = new Uint8Array(arrayBuffer);

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 declare var Painterro: any;
 import mergeImages from 'merge-images';
 import * as $ from 'jquery'
-import { ImageService } from '../image/image.service'
+import { ImageService } from '../image/image.service';
 
 @Component({
   selector: 'app-edit',
@@ -10,29 +10,27 @@ import { ImageService } from '../image/image.service'
   styleUrls: ['./edit.component.less']
 })
 export class EditComponent {
-  constructor(private imageService : ImageService) {
-
-  }
-//backplateImgUrl
+  constructor(private imageService: ImageService) {}
   images : number[] = []
   coords = "";
   ngOnInit() {
-    this.coords = this.getLocation();
-    for (let i = 0; i < 25; i++) {
+    this.getLocation();
+    for (let i = 1; i < 5; i++) {
       this.images[i] = i;
     }
 
     $( document ).ready(function() {
-      $('#img-12').on('click', function () {
+      $('#22').on('click', function () {
         let paintArea = Painterro({
           backgroundFillColorAlpha: 0.0,
           defaultSize: '128x128',
+          backplateImgUrl: 'assets/Default/2,2.png',
           defaultTool: 'brush',
           hiddenTools: ['crop', 'rotate', 'resize','open','bucket','text','select','arrow','pixelize','settings','rect'],
           toolbarPosition: 'top',
           saveHandler: function (image, done) {
             // of course, instead of raw XHR you can use fetch, jQuery, etc
-            let str:string = image.asDataURL;
+            let str:string = image.asDataURL();
             const imageName = 'test111';
             const byteString = window.atob(str.split(",")[1]);
             const arrayBuffer = new ArrayBuffer(byteString.length);
@@ -42,18 +40,8 @@ export class EditComponent {
             }
             const blob = new Blob([int8Array], { type: 'image/png' });    
             const imageFile = new File([blob], imageName, { type: 'image/png' });
-            this.imageService.addImage(this.coords, imageFile);
-
-            // var xhr = new XMLHttpRequest();
-            // xhr.open("POST", "http://127.0.0.1:5000/save-as-base64/");
-            // xhr.setRequestHeader("Content-Type", "application/json");
-            // xhr.send(JSON.stringify({
-            //   image: image.asDataURL()
-            // }));
-            // xhr.onload = function (e) {
-            //   // after saving is done, call done callback
-            //   done(true);
-            // }
+            
+            this.imageService.postImage(this.coords, imageFile);
             done(true);
           },
         });
@@ -75,15 +63,16 @@ export class EditComponent {
         });
     } else {
        console.log("No support for geolocation")
-       return '';
     }
     return '';
   }
 
-  getXY(Longitude: number, Latitude: number){
+  getXY(Longitude: number, Latitude: number) {
     let y = Math.floor((Latitude - 38) * 100);
     let x = Math.floor((Longitude + 78) * 100);
-    return "".concat(String(x), ',', String(y));
+    console.log("".concat(String(x), ',', String(y)))
+    this.coords = "".concat(String(x), ',', String(y));
   }
 }
 
+var test;
