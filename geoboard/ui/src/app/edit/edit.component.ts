@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 declare var Painterro: any;
+import mergeImages from 'merge-images';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-edit',
@@ -17,5 +19,7 @@ export class EditComponent {
       hiddenTools: ['crop', 'rotate', 'resize','open','bucket','text','select','arrow','pixelize','settings','rect'],
       toolbarPosition: 'top'
     }).show();
+  //   mergeImages(['assets/body.png', 'assets/eyes.png', 'assets/mouth.png'])
+  // .then(b64 => $('img').attr("src",b64));
   }
 }

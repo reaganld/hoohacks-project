@@ -29,7 +29,7 @@
         }
     }
     
-    .view, .edit {
+    .view {
         float: right;
         padding-right: 1rem;
         padding-left: 1rem;
@@ -37,6 +37,7 @@
         height: 100%;
         position: relative;
         border-radius: 10px;
+        margin-right: 3rem;
         
         p {
             text-decoration: none;
@@ -48,20 +49,6 @@
         &:hover {
             background-color: #2654c5;
         }
-    }
-
-    .view::after {
-        background-color: white;
-        width: 1px;
-        height: 1.7rem;
-        top: 16px;
-        content: "";
-        right: -1px;
-        position: absolute;
-    }
-
-    .edit {
-        margin-right: 1rem;
     }
 }
 
