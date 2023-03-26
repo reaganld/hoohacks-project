@@ -4,34 +4,30 @@ import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 
 import { Image } from "./image";
-import { Subject } from "rxjs";
+import { Observable, Subject, tap } from 'rxjs';
 
 @Injectable({
     providedIn: "root",
 })
 export class ImageService {
-    private image!: Image
     private images: Image[] = [];
     private images$ = new Subject<Image[]>();
-    private image$ = new Subject<Image[]>();
     readonly url = "http://localhost:3000/api/images";
 
     constructor(private http: HttpClient) {}
 
-    getImage() {
-        console.log("hit service");
+    getImages() {
         this.http
-            .get<{ image: Image }>(this.url)
+            .get<{ images: Image[] }>(this.url)
             .pipe(
-                map(imageData => { 
-                    console.log(imageData);
-                    return imageData.image;
-                })
-            )
-            .subscribe((image) => {
-                this.image = image; 
-                this.images$.next(this.images);
-            });
+            map((imageData) => {
+            return imageData.images;
+            })
+        )
+        .subscribe((images) => {
+            this.images = images;
+            this.images$.next(this.images);
+      });
     }
 
     getImagesStream() {
