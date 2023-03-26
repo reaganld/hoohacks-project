@@ -7,8 +7,15 @@ declare var Painterro: any;
   styleUrls: ['./edit.component.less']
 })
 export class EditComponent {
-
+//backplateImgUrl
+//initText
   ngOnInit() {
-    Painterro().show();
+    Painterro({
+      backgroundFillColorAlpha: 0.0,
+      defaultSize: '128x128',
+      defaultTool: 'brush',
+      hiddenTools: ['crop', 'rotate', 'resize','open','bucket','text','select','arrow','pixelize','settings','rect'],
+      toolbarPosition: 'top'
+    }).show();
   }
 }

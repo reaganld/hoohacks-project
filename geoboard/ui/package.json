@@ -21,6 +21,8 @@
     "cors": "^2.8.5",
     "multer": "^1.4.5-lts.1",
     "painterro": "^1.2.78",
+    "jquery": "^3.6.4",
+    "merge-images": "^2.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -30,6 +32,8 @@
     "@angular/cli": "~15.2.4",
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
+    "@types/jquery": "^3.5.16",
+    "@types/merge-images": "^1.2.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
