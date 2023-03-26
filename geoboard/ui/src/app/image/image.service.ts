@@ -35,19 +35,17 @@ export class ImageService {
         return this.images$.asObservable();
     }
 
-    addImage(x: string, y: string, image: File): void {
+    addImage(coords: string, image: File): void {
         const imageData = new FormData();
-        imageData.append("x", x);
-        imageData.append("y", y);
-        imageData.append("image", image);
+        imageData.append("coords", coords);
+        imageData.append("image", image, coords);
 
         this.http
             .post<{ image: Image }>(this.url, imageData)
             .subscribe((imageData) => {
                 const image: Image = {
                     _id: imageData.image._id,
-                    x: x,
-                    y: y,
+                    coords: coords,
                     imagePath: imageData.image.imagePath,
                 };
                 this.images.push(image);

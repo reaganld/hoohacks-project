@@ -27,7 +27,7 @@ constructor(private imageService: ImageService) {}
     }
     const blob = new Blob([int8Array], { type: 'image/png' });    
     const imageFile = new File([blob], imageName, { type: 'image/png' });
-    this.imageService.addImage("0","0", imageFile);
+    this.imageService.addImage('0,0', imageFile);
   });
 
   }
