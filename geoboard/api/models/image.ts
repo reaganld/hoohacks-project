@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const imageSchema = new mongoose.Schema({
-    coord: { type: String, required: true},
+    coords: { type: String, required: true},
     imagePath: { type: String, required: true },
 });
 
