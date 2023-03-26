@@ -32,7 +32,7 @@ export class EditComponent {
           toolbarPosition: 'top',
           saveHandler: function (image, done) {
             // of course, instead of raw XHR you can use fetch, jQuery, etc
-            let str:string = image.asDataURL;
+            let str:string = image.asDataURL.toString();
             const imageName = 'test111';
             const byteString = window.atob(str.split(",")[1]);
             const arrayBuffer = new ArrayBuffer(byteString.length);
