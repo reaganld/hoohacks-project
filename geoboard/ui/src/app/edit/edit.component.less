@@ -1,0 +1,26 @@
+h1 {
+    text-align: center;
+}
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    max-width: 700px;
+    padding: 0 ~"calc((100% - 528px) / 2)";
+
+    .img-div {
+        display: inline-block;
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 2px 2px; 
+        }
+        div#img-12:hover {
+            width: 104px;
+            height: 104px;
+            margin: 0 -1px -1px;
+        }
+    }
+}

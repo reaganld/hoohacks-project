@@ -1,1 +1,7 @@
-<p>edit works!</p>
+<h1>Current Grid View</h1>
+<div class="image-grid">
+    <div class="img-div" *ngFor="let image of this.images; let i = index">
+        <!-- <img src="{{ image }}" id="img-{{ i }}"/> -->
+        <div id="img-{{ i }}"></div>
+    </div>
+</div>
