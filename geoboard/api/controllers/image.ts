@@ -6,10 +6,11 @@ const getImage = async (req, res) => {
 };
 
 const postImage = async (req, res) => {
-  const { coord } = req.body;
+  const { x } = req.body.x;
+  const { y } = req.body.y;
   const imagePath = 'http://localhost:3000/images/' + req.file.filename; // Note: set path dynamically
   const image = new Image({
-    coord,
+    coords,
     imagePath,
   });
   const createdImage = await image.save();
