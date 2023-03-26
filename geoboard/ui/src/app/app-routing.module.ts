@@ -4,9 +4,8 @@ import { EditComponent } from './edit/edit.component';
 import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
-    { path: 'landing', component: LandingComponent },
-    { path: 'map', component: EditComponent },
-    { path: '',   redirectTo: '/landing', pathMatch: 'full' },
+    { path: '', component: LandingComponent },
+    { path: 'map', component: EditComponent }
 
 ];
 

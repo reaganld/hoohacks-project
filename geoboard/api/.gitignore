@@ -6,3 +6,4 @@ compiledCode/
 /node_modules
 *.env
 connect.js
+/images

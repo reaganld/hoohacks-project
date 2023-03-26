@@ -17,6 +17,7 @@ export class ImageService {
     constructor(private http: HttpClient) {}
 
     getImages() {
+        console.log("hit service");
         this.http
             .get<{ images: Image[] }>(this.url)
             .pipe(

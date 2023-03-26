@@ -30,7 +30,7 @@ app.use(cors());
 
 app.use('/images', express.static(path.join('images')));
 
-app.use('/api/profiles', imageRoutes);
+app.use('/api/images', imageRoutes);
 
 
 

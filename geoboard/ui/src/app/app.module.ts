@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { EditComponent } from './edit/edit.component';
 import { LandingComponent } from './landing/landing.component';
 import { ImageComponent } from './image/image.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ImageComponent } from './image/image.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
