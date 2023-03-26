@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/cli";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { map } from "rxjs/operators";
@@ -7,7 +7,7 @@ import { Image } from "./image";
 import { Subject } from "rxjs";
 
 @Injectable({
-    proidedIn: "root",
+    providedIn: "root",
 })
 export class ImageService {
     private images: Image[] = [];
@@ -42,7 +42,7 @@ export class ImageService {
 
         this.http
             .post<{ image: Image }>(this.url, imageData)
-            .subscribe((profileData) => {
+            .subscribe((imageData) => {
                 const image: Image = {
                     _id: imageData.image._id,
                     x: x,
