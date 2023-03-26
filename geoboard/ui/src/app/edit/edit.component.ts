@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare var Painterro: any;
 
 @Component({
   selector: 'app-edit',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class EditComponent {
 
+  ngOnInit() {
+    Painterro().show();
+  }
 }
