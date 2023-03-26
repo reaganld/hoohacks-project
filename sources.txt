@@ -1,0 +1,5 @@
+Sources: 
+
+https://stackoverflow.com/questions/58502673/angular-8-parsing-base64-to-file
+
+https://github.com/Jon-Peppinck/mean-image-upload
