@@ -18,7 +18,8 @@ export class EditComponent {
     for (let i = 1; i < 5; i++) {
       this.images[i] = i;
     }
-
+    //Required to pass the import
+    const self = this;
     $( document ).ready(function() {
       $('#22').on('click', function () {
         let paintArea = Painterro({
@@ -31,7 +32,7 @@ export class EditComponent {
           saveHandler: function (image, done) {
             // of course, instead of raw XHR you can use fetch, jQuery, etc
             let str:string = image.asDataURL().toString();
-            const imageName = 'test111';
+            const imageName = 'newTest';
             const byteString = window.atob(str.split(",")[1]);
             const arrayBuffer = new ArrayBuffer(byteString.length);
             const int8Array = new Uint8Array(arrayBuffer);
@@ -41,7 +42,7 @@ export class EditComponent {
             const blob = new Blob([int8Array], { type: 'image/png' });    
             const imageFile = new File([blob], imageName, { type: 'image/png' });
             
-            this.imageService.postImage(this.coords, imageFile);
+            self.imageService.addImage(this.coords, imageFile);
             done(true);
           },
         });
