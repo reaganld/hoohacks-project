@@ -16,7 +16,7 @@ const port = process.env.PORT;
 
 mongoose
   .connect(
-    `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@mymongodb.vwvixbf.mongodb.net/?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.MONGOUSERNAME}:${process.env.MONGOPASSWORD}@mymongodb.vwvixbf.mongodb.net/?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {

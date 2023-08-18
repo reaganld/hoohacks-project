@@ -30,11 +30,7 @@ const postImage = async (req, res) => {
     imagePath,
   });
   const createdImage = await image.save();
-  res.status(201).json({
-    image: {
-      ...createdImage._id,
-    },
-  });
+  res.status(201);
 };
 
 export{getImages, postImage};
