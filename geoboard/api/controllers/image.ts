@@ -1,15 +1,21 @@
 import { Image } from "../models/image";
 
 const getImages = async (req, res) => {
-    console.log("here");
-    const images = await Image.find();
+    var images = [];
+    const coords = req.body.split();
+    var x = coords[0] - 2;
+    var y = coords[1] + 2;
+    for (var i = 0; i < 5; i++) {
+      for (var j = 0; j < 5; j++) {
+        images.push(await Image.findById((x + i) + "," + (y + j)));
+      }
+    }
     res.status(200).json({ images });
 };
 
 const putImage = async (req, res) => {
   const { coords} = req.body;
   const imagePath = 'http://localhost:3000/images/' + req.file.filename; // Note: set path dynamically
-  //   const imagePath = 'http://localhost:3000/images/' + req.file.filename; // Note: set path dynamically
 //   const matchingImage = await Image.findOne({ coords: coords });
 //   const mFilepath = matchingImage.imagePath;
 //   mergeImages([imagePath, mFilepath])
