@@ -26,8 +26,9 @@ const postImage = async (req, res) => {
 //       const imageFile = new File([blob], imageName, { type: 'image/png' });
 //     });
   const image = new Image({
-    coords,
-    imagePath,
+    _id: coords,
+    coords: coords,
+    imagePath: imagePath
   });
   const createdImage = await image.save();
   res.status(201);
