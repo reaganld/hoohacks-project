@@ -1,1 +1,1 @@
-# hoohacks-project
+# HooHacks Project
