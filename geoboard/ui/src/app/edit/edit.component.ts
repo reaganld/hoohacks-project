@@ -42,7 +42,7 @@ export class EditComponent {
             const blob = new Blob([int8Array], { type: 'image/png' });    
             const imageFile = new File([blob], imageName, { type: 'image/png' });
             
-            self.imageService.addImage(this.coords, imageFile);
+            self.imageService.addImage(self.coords, imageFile);
             done(true);
           },
         });
