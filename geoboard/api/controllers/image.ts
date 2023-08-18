@@ -6,7 +6,7 @@ const getImages = async (req, res) => {
     res.status(200).json({ images });
 };
 
-const postImage = async (req, res) => {
+const putImage = async (req, res) => {
   const { coords} = req.body;
   const imagePath = 'http://localhost:3000/images/' + req.file.filename; // Note: set path dynamically
   //   const imagePath = 'http://localhost:3000/images/' + req.file.filename; // Note: set path dynamically
@@ -34,4 +34,4 @@ const postImage = async (req, res) => {
   res.status(201);
 };
 
-export{getImages, postImage};
+export{getImages, putImage};

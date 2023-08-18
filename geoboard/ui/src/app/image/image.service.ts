@@ -40,7 +40,7 @@ export class ImageService {
         imageData.append("image", image);
 
         this.http
-            .post<{ image: Image }>(this.url, imageData)
+            .put<{ image: Image }>(this.url, imageData)
             .subscribe((imageData) => {
                 const image: Image = {
                     _id: imageData.image._id,
