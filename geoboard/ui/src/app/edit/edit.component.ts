@@ -69,8 +69,8 @@ export class EditComponent {
   }
 
   getXY(Longitude: number, Latitude: number) {
-    let y = Math.floor((Latitude - 38) * 100);
-    let x = Math.floor((Longitude + 78) * 100);
+    let y = Math.floor((Latitude) * 100) - 3578;
+    let x = Math.floor((Longitude) * 100) + 7869;
     console.log("".concat(String(x), ',', String(y)))
     this.coords = "".concat(String(x), ',', String(y));
   }
