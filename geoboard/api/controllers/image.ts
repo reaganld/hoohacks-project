@@ -3,6 +3,7 @@ import * as fs from 'fs';
 
 const getImages = async (req, res) => {
     const images: any[] = [];
+    console.log(req.body)
     const coords = req.body.split();
     var x = coords[0] - 2;
     var y = coords[1] + 2;
@@ -15,15 +16,15 @@ const getImages = async (req, res) => {
 };
 
 const putImage = async (req, res) => {
-  const { coords} = req.body;
-  const imagePath = 'http://localhost:3000/images/' + req.file.filename; // Note: set path dynamically  
-  const imageString = req.file.buffer.toString('utf8');
+  const coords = req.body.coords;
+  // const imagePath = 'http://localhost:3000/images/' + req.file.filename; // Note: set path dynamically  
+  const imageString = req.body.dataURL;
   const image = new Image({
     _id: coords,
     coords: coords,
-    imagePath: imagePath,
     imageString: imageString
   });
+  await Image.findOneAndRemove({_id: coords});
   const createdImage = await image.save();
   res.status(201);
 };

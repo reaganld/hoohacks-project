@@ -18,6 +18,7 @@ export class EditComponent {
     for (let i = 1; i < 5; i++) {
       this.images[i] = i;
     }
+    this.imageService.getImages();
     //Required to pass the import
     const self = this;
     $( document ).ready(function() {
@@ -32,17 +33,24 @@ export class EditComponent {
           saveHandler: function (image, done) {
             // of course, instead of raw XHR you can use fetch, jQuery, etc
             let str:string = image.asDataURL().toString();
-            const imageName = 'newTest';
-            const byteString = window.atob(str.split(",")[1]);
-            const arrayBuffer = new ArrayBuffer(byteString.length);
-            const int8Array = new Uint8Array(arrayBuffer);
-            for (let i = 0; i < byteString.length; i++) {
-              int8Array[i] = byteString.charCodeAt(i);
-            }
-            const blob = new Blob([int8Array], { type: 'image/png' });    
-            const imageFile = new File([blob], imageName, { type: 'image/png' });
+            // mergeImages(['assets/body.png', str, 'assets/mouth.png'])
+            // .then(b64 => {
+            //   // $('img').attr("src",b64);
+            //   console.log(b64);
+            //   str = b64;
+            // }); 
             
-            self.imageService.addImage(self.coords, imageFile);
+            // const imageName = 'Now';
+            // const byteString = window.atob(str.split(",")[1]);
+            // const arrayBuffer = new ArrayBuffer(byteString.length);
+            // const int8Array = new Uint8Array(arrayBuffer);
+            // for (let i = 0; i < byteString.length; i++) {
+            //   int8Array[i] = byteString.charCodeAt(i);
+            // }
+            // const blob = new Blob([int8Array], { type: 'image/png' });    
+            // const imageFile = new File([blob], imageName, { type: 'image/png' });
+            
+            self.imageService.addImage(self.coords, str);
             done(true);
           },
         });
@@ -51,8 +59,7 @@ export class EditComponent {
       })
     });
     
-  //   mergeImages(['assets/body.png', 'assets/eyes.png', 'assets/mouth.png'])
-  // .then(b64 => $('img').attr("src",b64));
+    
   }
 
   getLocation(): string {
@@ -74,6 +81,9 @@ export class EditComponent {
     console.log("".concat(String(x), ',', String(y)))
     this.coords = "".concat(String(x), ',', String(y));
   }
+
+  reset() {
+    this.imageService.addAllImages();
+  }
 }
 
-var test;

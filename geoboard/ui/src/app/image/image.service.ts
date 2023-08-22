@@ -34,21 +34,34 @@ export class ImageService {
         return this.images$.asObservable();
     }
 
-    addImage(coords: string, image: File): void {
+    addImage(coords: string, dataURL: string): void {
         const imageData = new FormData();
         imageData.append("coords", coords);
-        imageData.append("image", image);
+        imageData.append("dataURL", dataURL);
 
         this.http
             .put<{ image: Image }>(this.url, imageData)
             .subscribe((imageData) => {
                 const image: Image = {
-                    _id: imageData.image._id,
+                    _id: coords,
                     coords: coords,
-                    imagePath: imageData.image.imagePath,
+                    imageString: dataURL,
                 };
                 this.images.push(image);
                 this.images$.next(this.images);
             });
     }
+
+    addAllImages() {
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                let coords = (i - 2) + "," + (j - 2);
+                console.log(i + "," + j);
+                let str = "http://localhost:3000/images/" + i + "," + j + ".png";
+                this.addImage(coords, str);
+            }
+        }
+    }
+    
+    
 }
